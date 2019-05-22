@@ -1,0 +1,56 @@
+.ms-TodoGrid {
+    margin-top: 8px;
+}
+
+.ms-TodoGrid-tile {
+    float:left;
+    text-align: center;
+    position: relative;
+    background: #f3f2f1;
+    margin: 7px;
+
+    cursor: pointer;
+}
+
+.ms-TodoGrid-tile:focus {
+    outline: none;
+}
+
+.ms-TodoGrid-tile .ms-TodoGrid-sizer {
+    padding-bottom: 100%;
+}
+
+.ms-TodoGrid-tile .ms-TodoGrid-sizer .ms-TodoGrid-padder {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.ms-TodoGrid-tile .ms-TodoGrid-sizer .ms-TodoGrid-padder .ms-TodoGrid-label {
+    margin: 0 auto;
+}
+
+.todoDone {
+    background-color: green;
+    opacity: 0.3;
+
+    box-shadow: 0;
+}
+
+.todoUndone {
+    background-color: red;
+}
+
+.ms-TodoGrid-delete {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    z-index: 100;
+    font-size: 20px;
+}
