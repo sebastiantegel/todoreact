@@ -1,5 +1,5 @@
 // import * as ReactDOM from 'react-dom';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import * as React from 'react';
 import App from './App';
 import { ITodoItem } from './components/Todo/todo';
@@ -21,7 +21,7 @@ describe('App ', () => {
   });
 
   it('should add an item', () => {
-    const app = mount<App>(<App />);
+    const app = shallow<App>(<App />);
 
     const mockItem: ITodoItem = { Item: 'Test', Done: false }
 
@@ -40,7 +40,7 @@ describe('App ', () => {
   });
 
   it('should remove an item', () => {
-    const app = mount<App>(<App />);
+    const app = shallow<App>(<App />);
 
     const mockItem: ITodoItem = { Item: 'Test', Done: false }
     const mockItem2: ITodoItem = { Item: 'Test2', Done: false }
@@ -68,7 +68,7 @@ describe('App ', () => {
   });
 
   it('should mark an item as done', () => {
-    const app = mount<App>(<App />);
+    const app = shallow<App>(<App />);
 
     const mockItem: ITodoItem = { Item: 'Test', Done: false }
 
@@ -79,7 +79,7 @@ describe('App ', () => {
   });
 
   it('should toggle done value of item', () => {
-    const app = mount<App>(<App />);
+    const app = shallow<App>(<App />);
 
     const mockItem: ITodoItem = { Item: 'Test', Done: false }
 
@@ -92,4 +92,4 @@ describe('App ', () => {
 
     expect(app.instance().state.Todos[0].Done).toBeFalsy();
   });
-})
+}) 

@@ -9,7 +9,7 @@ interface IAddState {
   todo: string;
 }
 
-interface IAddProps {
+export interface IAddProps {
   addTodo(todo: ITodoItem): void;
 }
 
@@ -34,7 +34,7 @@ class AddTodo extends React.Component<IAddProps, IAddState> {
               <TextField name='todo' label='' placeholder='Todo item here' value={this.state.todo} onChange={this.handleChange} />
             </div>
             <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg2">
-              <PrimaryButton type='submit'>Save</PrimaryButton>
+              <PrimaryButton type='submit' className='saveTodo'>Save</PrimaryButton>
             </div>
           </div>
         </div>        

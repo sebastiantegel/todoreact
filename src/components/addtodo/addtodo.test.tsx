@@ -1,12 +1,10 @@
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
-// import App from './App';
-// import { ITodoItem } from './components/Todo/todo';
-import AddTodo from './addtodo';
+import AddTodo, { IAddProps } from './addtodo';
 
 describe('AddTodo ', () => {
-    const props = {
-        addTodo: jest.fn()
+    const props: IAddProps = {
+        addTodo: jest.fn(),
     }
   
     it('renders without crashing', () => {
@@ -17,17 +15,29 @@ describe('AddTodo ', () => {
       shallow(<AddTodo {...props} />);
     });
 
+    it('should call addItem when submit', () => {
+        const form = mount<AddTodo>(<AddTodo {...props} />).find('form');
+
+        const event = {
+            preventdefault: jest.fn()
+        }
+
+        form.simulate('submit', event);
+
+        expect(props.addTodo).toHaveBeenCalled();
+    });
+
     it('should empty state after saving item', () => {
-        const component = mount<AddTodo>(<AddTodo {...props} />);
+        const component = shallow<AddTodo>(<AddTodo {...props} />);
 
         component.instance().addItem(new Event('test'));
 
-        expect(component.instance().props.addTodo).toHaveBeenCalled();
+        expect(props.addTodo).toHaveBeenCalled();
         expect(component.instance().state.todo).toBe('');
     });
 
     it('should update state when typing', () => {
-        const component = mount<AddTodo>(<AddTodo {...props} />);
+        const component = shallow<AddTodo>(<AddTodo {...props} />);
 
         const objectWithValue = { target: { value: 'a' } };
         component.instance().handleChange(objectWithValue);
